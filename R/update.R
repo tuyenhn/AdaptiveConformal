@@ -124,12 +124,12 @@ aci_metrics <- function(object, indices = NULL, interval_width = 20) {
   path_length <- sum(abs(diff(object$intervals[indices, 2] - object$intervals[indices, 1])))
 
   residuals <- object$Y[indices] - object$predictions[indices, ]
-  losses <- slide_dbl(
-    pinball_loss(object$alpha, residuals, diff / 2),
-    mean,
-    .after = interval_width,
-    .step = 1
-  )
+  # losses <- slide_dbl(
+  #   pinball_loss(object$alpha, residuals, diff / 2),
+  #   mean,
+  #   .after = interval_width,
+  #   .step = 1
+  # )
   # optimal_radii <- slide_dbl(residuals, function(x) quantile(x, object$alpha), .after = interval_width, .step = 1)
   # optimal_losses <- slide_dbl(seq_along(residuals), function(i) mean(pinball_loss(object$alpha, residuals[i], optimal_radii[i]), .after = interval_width, .step = 1))
   # strongly_adaptive_regret <- max(losses - optimal_losses)
